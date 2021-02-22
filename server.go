@@ -21,6 +21,7 @@ func runApp() {
 	e.Logger.SetLevel(log.DEBUG)
 
 	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 
 	e.Validator = &customValidator{validator: validator.New()}
 
@@ -44,4 +45,7 @@ func initUsers(e *echo.Echo, db *gorm.DB) {
 	controller := controller.NewUserController(service)
 	e.GET("/users", controller.ListUsers)
 	e.POST("/users", controller.PostUsers)
+	e.GET("/users/:id", controller.GetUser)
+	e.PUT("/users/:id", controller.PutUser)
+	e.DELETE("/users/:id", controller.DeleteUser)
 }

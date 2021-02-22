@@ -12,6 +12,9 @@ import (
 type UserController interface {
 	ListUsers(c echo.Context) error
 	PostUsers(c echo.Context) error
+	GetUser(c echo.Context) error
+	PutUser(c echo.Context) error
+	DeleteUser(c echo.Context) error
 }
 
 type userController struct {
@@ -105,4 +108,16 @@ func (u *userController) PostUsers(c echo.Context) error {
 	}
 
 	return c.JSON(http.StatusCreated, response)
+}
+
+func (u userController) GetUser(c echo.Context) error {
+	panic("not implemented")
+}
+
+func (u userController) PutUser(c echo.Context) error {
+	panic("not implemented")
+}
+
+func (u userController) DeleteUser(c echo.Context) error {
+	panic("not implemented")
 }
