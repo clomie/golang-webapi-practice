@@ -1,4 +1,4 @@
-package main
+package driver
 
 import (
 	"log"
@@ -11,7 +11,7 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-func initDB() *gorm.DB {
+func InitDB() *gorm.DB {
 	dsn := "host=localhost user=postgres password=postgres dbname=postgres port=5432 sslmode=disable TimeZone=Asia/Tokyo"
 	newLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags),

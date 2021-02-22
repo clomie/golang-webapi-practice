@@ -2,7 +2,7 @@
 
 ```console
 $ docker-compose up -d
-$ go run server.go database.go
+$ go run main.go wire_gen.go
 ```
 
 ```console
