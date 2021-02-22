@@ -47,7 +47,6 @@ func (u *userController) ListUsers(c echo.Context) error {
 	if err := c.Validate(req); err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-	c.Logger().Infof("request: %v %v", c.Request().URL, req)
 
 	cmd := &service.ListUsersCommand{
 		Limit:  req.Limit,
@@ -66,7 +65,6 @@ func (u *userController) ListUsers(c echo.Context) error {
 		Offset: res.Offset,
 	}
 
-	c.Logger().Infof("response: %v %v", c.Request().URL, response)
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -89,7 +87,6 @@ func (u *userController) PostUsers(c echo.Context) error {
 	if err := c.Validate(req); err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-	c.Logger().Infof("request: %v %v", c.Request().URL, req)
 
 	cmd := &service.CreateUserCommand{
 		Name: req.Name,
@@ -107,6 +104,5 @@ func (u *userController) PostUsers(c echo.Context) error {
 		UpdatedAt: res.UpdatedAt,
 	}
 
-	c.Logger().Infof("response: %v %v", c.Request().URL, req)
 	return c.JSON(http.StatusCreated, response)
 }

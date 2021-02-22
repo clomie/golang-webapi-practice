@@ -7,6 +7,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
 	"gorm.io/gorm"
 )
@@ -18,6 +19,9 @@ func main() {
 func runApp() {
 	e := echo.New()
 	e.Logger.SetLevel(log.DEBUG)
+
+	e.Use(middleware.Logger())
+
 	e.Validator = &customValidator{validator: validator.New()}
 
 	db := initDB()
